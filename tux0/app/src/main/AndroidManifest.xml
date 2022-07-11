@@ -37,6 +37,7 @@
         </activity>
 
         <activity android:name=".ui.SubActivity"/>
+        <activity android:name=".ui.opensource_go"/>
 
     </application>
 </manifest>

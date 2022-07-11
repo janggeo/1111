@@ -5,4 +5,9 @@
         <item name="android:windowBackground">@drawable/ground</item>
     </style>
 
+    <style name="MenuActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

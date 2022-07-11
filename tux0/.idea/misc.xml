@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/layout/fragment_dashboard.xml" value="0.17916666666666667" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/layout/header.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/layout/manual.xml" value="0.121875" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/layout/opensource_list.xml" value="0.121875" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/layout/sidemenu.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/menu/menu_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux0/app/src/main/res/menu/sidemenu.xml" value="0.12083333333333333" />
         <entry key="..\:/AndroidStudioProjects/tux0/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/tux0/app/src/main/res/layout/manual.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/zldnl/AndroidStudioProjects/tux0/app/src/main/res/drawable-v24/add_circle-48px.xml" value="0.1" />
