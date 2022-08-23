@@ -1,4 +1,4 @@
-package com.example.tux0.ui.dashboard;
+package com.example.tux0.ui.notifications;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,34 +6,26 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.ListFragment;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.tux0.MainActivity;
 import com.example.tux0.R;
-import com.example.tux0.databinding.FragmentDashboardBinding;
+import com.example.tux0.databinding.FragmentNotificationsBinding;
 import com.example.tux0.ui.opensource_go;
 import com.google.android.material.navigation.NavigationView;
 
-public class DashboardFragment extends ListFragment {
+public class NotificationsFragment extends Fragment {
 
-    ArrayAdapter<String> adapter;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
-
-    private FragmentDashboardBinding binding;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -43,21 +35,22 @@ public class DashboardFragment extends ListFragment {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+    private FragmentNotificationsBinding binding;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-        setHasOptionsMenu(true);
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+
+        Intent intent = new Intent(getActivity(), favorite.class);
+        startActivity(intent);
+
+        NotificationsViewModel notificationsViewModel =
+                new ViewModelProvider(this).get(NotificationsViewModel.class);
+
+        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        View rootView = inflater.inflate(R.layout.fragment_dashboard,container,false);
-        String[] values = new String[] {"a", "b", "c"};
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
-        setListAdapter(adapter);
+        final TextView textView = binding.textNotifications;
+        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         drawerLayout = getActivity().findViewById(R.id.drawer_layout);
         navigationView = getActivity().findViewById(R.id.nav_view2);
@@ -80,10 +73,8 @@ public class DashboardFragment extends ListFragment {
             }
         });
 
-
         return root;
     }
-
 
     @Override
     public void onDestroyView() {
@@ -91,4 +82,3 @@ public class DashboardFragment extends ListFragment {
         binding = null;
     }
 }
-

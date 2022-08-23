@@ -80,7 +80,6 @@ public class DashboardFragment extends ListFragment {
             }
         });
 
-
         return root;
     }
 
