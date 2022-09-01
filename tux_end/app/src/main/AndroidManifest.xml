@@ -35,6 +35,8 @@
         <activity
             android:name=".loginActivity"
             android:exported="true" />
+        <activity android:name="com.example.tux0.user_em" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
