@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.w3c.dom.Text;
+
 public class loginActivity extends AppCompatActivity
 {
     private static final String TAG = "loginActivity";
@@ -27,12 +33,12 @@ public class loginActivity extends AppCompatActivity
     private EditText memail;
     private EditText mpasswd;
     public String user_m;
+    Animation anim;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -48,6 +54,15 @@ public class loginActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        TextView login_text = findViewById(R.id.login_text);
+        anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(1500);
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+        login_text.startAnimation(anim);
+
         button_log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +83,6 @@ public class loginActivity extends AppCompatActivity
                                     Log.d(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();// 현재 접속한 사용자 정보 가져오기
                                     //로그인 성공시 MainActivity로 전환
-
                                     Intent intent = new Intent(loginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 } else {
@@ -82,5 +96,7 @@ public class loginActivity extends AppCompatActivity
 
             }
         });
+
     }
 }
+

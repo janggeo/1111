@@ -8,9 +8,9 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
+        
         try{
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         }catch(InterruptedException e){
             e.printStackTrace();
         }

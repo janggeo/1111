@@ -8,6 +8,6 @@
     <string name="open" >Open Navigation Drawer</string>
     <string name="close" >Close Navigation Drawer</string>
     <string name="id">id:</string>
-    <string name="email"></string>
+    <string name="email">email</string>
 
 </resources>

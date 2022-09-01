@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tux0.MainActivity;
 import com.example.tux0.R;
+import com.example.tux0.databinding.FavoriteBinding;
 import com.example.tux0.databinding.FragmentNotificationsBinding;
 import com.example.tux0.recipe;
 import com.example.tux0.ui.opensource_go;
@@ -51,6 +52,8 @@ public class favorite extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorite);
+
+        getSupportActionBar().setTitle("즐겨찾기");
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize((true));
@@ -91,6 +94,13 @@ public class favorite extends AppCompatActivity {
         }
         adpater = new com.example.tux0.recipeAdapter(arrayList, this);
         recyclerView.setAdapter(adpater);   //리사이클러뷰 호출?
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent i = new Intent(this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
 }
