@@ -103,6 +103,7 @@
         app:layout_constraintVertical_bias="0.929" />
 
     <TextView
+<<<<<<< HEAD
         android:id="@+id/login_text1"
         android:layout_width="243dp"
         android:layout_height="122dp"
@@ -148,5 +149,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+=======
+        android:id="@+id/login_text"
+        android:layout_width="243dp"
+        android:layout_height="122dp"
+        android:fontFamily="@font/bm_ttf"
+        android:text="LOGIN"
+        android:textColor="@color/purple_500"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.391" />
+>>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
 
 </androidx.constraintlayout.widget.ConstraintLayout>

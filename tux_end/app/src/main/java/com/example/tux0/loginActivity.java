@@ -7,9 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+<<<<<<< HEAD
+=======
+import android.view.animation.AnimationUtils;
+>>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,24 +28,34 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.w3c.dom.Text;
+
 public class loginActivity extends AppCompatActivity
 {
     private static final String TAG = "loginActivity";
     private FirebaseAuth mAuth;
     private EditText memail;
     private EditText mpasswd;
+<<<<<<< HEAD
     private Context Context_save;
     private CheckBox id_save;
     Animation anim;
     String id_s, pw_s;
+=======
+    public String user_m;
+    Animation anim;
+>>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+<<<<<<< HEAD
         Context_save = this;
         id_save = findViewById(R.id.id_save);
+=======
+>>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
         mAuth = FirebaseAuth.getInstance();
         memail = findViewById(R.id.email);      //email
         mpasswd = findViewById(R.id.pw);        //password
@@ -55,12 +70,17 @@ public class loginActivity extends AppCompatActivity
             }
         });
 
+<<<<<<< HEAD
         TextView login_text1 = findViewById(R.id.login_text1);
+=======
+        TextView login_text = findViewById(R.id.login_text);
+>>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
         anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(1500);
         anim.setStartOffset(20);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
+<<<<<<< HEAD
         login_text1.startAnimation(anim);
 
         TextView login_text2 = findViewById(R.id.login_text2);
@@ -95,6 +115,9 @@ public class loginActivity extends AppCompatActivity
         });
 
 
+=======
+        login_text.startAnimation(anim);
+>>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
 
         button_log.setOnClickListener(new View.OnClickListener() {
             @Override

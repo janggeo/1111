@@ -11,7 +11,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tux0.databinding.FragmentNotificationsBinding;
+<<<<<<< HEAD
 import com.example.tux0.favorite;
+=======
+>>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
 
 
 public class NotificationsFragment extends Fragment {
