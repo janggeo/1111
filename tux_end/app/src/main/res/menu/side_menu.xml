@@ -6,4 +6,8 @@
         android:id="@+id/opensource"
         android:title="opensource"/>
 
+    <item
+        android:id="@+id/logout"
+        android:title="로그아웃"/>
+
 </menu>

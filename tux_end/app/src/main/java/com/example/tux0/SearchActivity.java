@@ -35,9 +35,6 @@ public class SearchActivity extends AppCompatActivity {
     private String search1;
     private String search2;
     private String search3;
-
-
-
     private Button search_Btn;
 
 
@@ -69,9 +66,9 @@ public class SearchActivity extends AppCompatActivity {
         databaseReference = database.getReference("recipe");
 
 
-        RadioButton rb1 = findViewById(R.id.radioButton1);
-        RadioButton rb2 = findViewById(R.id.radioButton2);
-        RadioButton rb3 = findViewById(R.id.radioButton3);
+        Button rb1 = findViewById(R.id.radioButton1);
+        Button rb2 = findViewById(R.id.radioButton2);
+        Button rb3 = findViewById(R.id.radioButton3);
 
         //"검색창 1개" 라디오버튼 클릭
         rb1.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +81,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 //검색 버튼 클릭시
                 search_Btn = findViewById(R.id.searchBtn);
+                search_Btn.setVisibility(View.VISIBLE);
                 search_Btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -105,6 +103,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 //검색버튼 클릭시
                 search_Btn = findViewById(R.id.searchBtn);
+                search_Btn.setVisibility(View.VISIBLE);
                 search_Btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -128,6 +127,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 //검색버튼 클릭시
                 search_Btn = findViewById(R.id.searchBtn);
+                search_Btn.setVisibility(View.VISIBLE);
                 search_Btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

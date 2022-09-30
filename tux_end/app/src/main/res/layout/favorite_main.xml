@@ -25,7 +25,7 @@
                 android:src="@drawable/ic_launcher_background"/>
 
             <Button
-                android:id="@+id/favorite"
+                android:id="@+id/favorite_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -70,18 +70,6 @@
                 android:text="info"
                 android:textSize="15sp"
                 android:layout_weight="8"/>
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/tv_url"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_margin="5dp"-->
-            <!--                android:layout_marginTop="20dp"-->
-            <!--                android:paddingTop="7dp"-->
-            <!--                android:text="연결"-->
-            <!--                android:textSize="15sp" />-->
-
-
 
         </LinearLayout>
     </LinearLayout>

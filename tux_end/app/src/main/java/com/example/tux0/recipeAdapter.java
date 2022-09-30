@@ -3,6 +3,7 @@ package com.example.tux0;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,12 +50,13 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Customview
         Glide.with(holder.itemView)
                 .load(arrayList.get(position).getimg())
                 .into(holder.iv_img);
+
         holder.tv_name.setText((arrayList.get(position).getname()));
         holder.tv_url.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 int url_position = holder.getAdapterPosition();    //arrayList에서 해당 url이 들어있는 위치
-                url = arrayList.get(url_position).geturl();        //해당 위치의 url 얻기
+                url = arrayList.get(url_position).geturl();     //해당 위치의 url 얻기
                 Intent urlintent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));  //해당 url로 연결
                 urlintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(urlintent);
@@ -70,12 +72,11 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Customview
                     uid = firebaseUser.getUid();
                     //String email = firebaseUser.getEmail();
 
-                    int position = holder.getAdapterPosition(); // 즐겨찾기에 추가할 레시피의 arrayList 에서의 위치(인덱스)가져오기
-                    id = arrayList.get(position).getid();       //arraylist position인덱스에 위치한 레시피의 id저장
-
+                    int position = holder.getAdapterPosition();// 즐겨찾기에 추가할 레시피의 arrayList 에서의 위치(인덱스)가져오기
+                    id = arrayList.get(position).getid(); //arraylist position인덱스에 위치한 레시피의 id저장
                     database = FirebaseDatabase.getInstance();
                     databaseReference = database.getReference("Users"); //레시피를 저장할 위치
-
+                    Log.v("test", "test " + position);
                     databaseReference.child(uid).child("favorite").child(id).child("name").setValue(arrayList.get(position).getname());
                     databaseReference.child(uid).child("favorite").child(id).child("summary").setValue(arrayList.get(position).getsummary());
                     databaseReference.child(uid).child("favorite").child(id).child("img").setValue(arrayList.get(position).getimg());
