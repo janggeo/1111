@@ -10,15 +10,9 @@
         android:id="@+id/user_name"
         android:layout_width="374dp"
         android:layout_height="59dp"
-<<<<<<< HEAD
         android:text="hi"
         android:textColor="#ffffff"
         android:textSize="25dp"
-=======
-        android:text=""
-        android:textColor="#ffffff"
-        android:textSize="20dp"
->>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
         android:textStyle="bold" />
 
 </LinearLayout>

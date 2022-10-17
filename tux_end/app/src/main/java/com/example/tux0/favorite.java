@@ -80,6 +80,7 @@ public class favorite extends AppCompatActivity {
 
         adpater = new com.example.tux0.favoriteAdapter(arrayList, this);
         recyclerView.setAdapter(adpater);   //리사이클러뷰 호출?
+
     }
 
     @Override

@@ -76,7 +76,7 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Customview
                     id = arrayList.get(position).getid(); //arraylist position인덱스에 위치한 레시피의 id저장
                     database = FirebaseDatabase.getInstance();
                     databaseReference = database.getReference("Users"); //레시피를 저장할 위치
-                    Log.v("test", "test " + position);
+                    databaseReference.child(uid).child("favorite").child(id).child("id").setValue(arrayList.get(position).getid());
                     databaseReference.child(uid).child("favorite").child(id).child("name").setValue(arrayList.get(position).getname());
                     databaseReference.child(uid).child("favorite").child(id).child("summary").setValue(arrayList.get(position).getsummary());
                     databaseReference.child(uid).child("favorite").child(id).child("img").setValue(arrayList.get(position).getimg());

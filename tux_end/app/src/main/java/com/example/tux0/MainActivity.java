@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -114,18 +113,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseuser != null) {
             email = firebaseuser.getEmail();
         }
 
+
         View header = navigationView.getHeaderView(0);
         TextView user_name = (TextView) header.findViewById(R.id.user_name);
         user_name.setText(email);
 
-=======
->>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
         /*
         Button button_camera = (Button)findViewById(R.id.button_camera);
         button_camera.setOnClickListener(new View.OnClickListener() {

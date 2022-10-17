@@ -44,10 +44,6 @@
         <activity
             android:name=".loginActivity"
             android:exported="true" />
-<<<<<<< HEAD
-=======
-        <activity android:name="com.example.tux0.user_em" />
->>>>>>> 476aaa5476f0509c13b53d843daefe79adab6174
 
         <activity
             android:name=".MainActivity"
