@@ -65,7 +65,6 @@ public class SearchActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("recipe");
 
-
         Button rb1 = findViewById(R.id.radioButton1);
         Button rb2 = findViewById(R.id.radioButton2);
         Button rb3 = findViewById(R.id.radioButton3);

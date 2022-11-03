@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/activity_search.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/activity_search_main.xml" value="0.1078125" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/favorite.xml" value="0.17916666666666667" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/favorite_main.xml" value="0.17916666666666667" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/fragment_dashboard.xml" value="0.17916666666666667" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/fragment_dashboard_main.xml" value="0.178125" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/fragment_dashboardmm.xml" value="0.178125" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/fragment_home.xml" value="0.17916666666666667" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/fragment_notifications.xml" value="0.17916666666666667" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/ingredient.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/layout/ingredient_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/0316/tux_end/app/src/main/res/menu/menu_main.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/tux_end/app/src/main/res/drawable/round.xml" value="0.119" />
         <entry key="..\:/AndroidStudioProjects/tux_end/app/src/main/res/layout/activity_join.xml" value="0.17916666666666667" />
         <entry key="..\:/AndroidStudioProjects/tux_end/app/src/main/res/layout/activity_login.xml" value="0.22" />

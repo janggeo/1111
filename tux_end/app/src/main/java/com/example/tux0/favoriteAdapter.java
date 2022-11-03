@@ -48,8 +48,6 @@ public class favoriteAdapter extends RecyclerView.Adapter<favoriteAdapter.Favori
     private FirebaseUser firebaseUser;
     private String uid;
 
-
-
     @NonNull
     @Override
     public Favoriteviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
