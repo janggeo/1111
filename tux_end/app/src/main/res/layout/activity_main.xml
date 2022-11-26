@@ -21,6 +21,7 @@
         app:menu="@menu/bottom_nav_menu"
         tools:ignore="MissingConstraints">
 
+
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <fragment
@@ -107,7 +108,24 @@
         app:layout_constraintEnd_toEndOf="@+id/nav_host_fragment_activity_main"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:showAsAction="always">
+        app:showAsAction="always"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="411dp"
+            android:layout_height="674dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_ingre"
+                android:layout_width="match_parent"
+                android:layout_height="672dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view2"
@@ -117,6 +135,7 @@
             app:headerLayout="@layout/header"
             app:menu="@menu/side_menu"
             app:showAsAction="always" />
+
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

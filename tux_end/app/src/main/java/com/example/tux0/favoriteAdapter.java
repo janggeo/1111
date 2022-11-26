@@ -15,6 +15,7 @@ import java.util.*;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -22,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -31,8 +33,9 @@ import java.util.ArrayList;
 public class favoriteAdapter extends RecyclerView.Adapter<favoriteAdapter.Favoriteviewholder> {
 
     private ArrayList<recipe> arrayList;
-    private Context context;
+    public static Context context;
     public String url;
+
     public favoriteAdapter(ArrayList<recipe> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
@@ -43,7 +46,7 @@ public class favoriteAdapter extends RecyclerView.Adapter<favoriteAdapter.Favori
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    public String id;
+    static public String id;
     public String realid;
     private FirebaseUser firebaseUser;
     private String uid;
@@ -78,13 +81,10 @@ public class favoriteAdapter extends RecyclerView.Adapter<favoriteAdapter.Favori
         holder.favorite_delete.setOnClickListener(new View.OnClickListener() { // 삭제 버튼 클릭시
             @Override
             public void onClick(View v) {
-
                 //현재 로그인된 사용자 정보 가져오기
                 firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 if(firebaseUser != null) {  //사용자 정보가 잘 가져와졌을 경우
                     uid = firebaseUser.getUid();
-                    //String email = firebaseUser.getEmail();
-                    //Toast.makeText(context.getApplicationContext(),uid, Toast.LENGTH_SHORT).show();
                     int position = holder.getAdapterPosition();
                     // 즐겨찾기에서 삭제할 레시피의 arrayList 에서의 위치(인덱스)가져오기
                     id = arrayList.get(position).getid();
@@ -95,11 +95,14 @@ public class favoriteAdapter extends RecyclerView.Adapter<favoriteAdapter.Favori
                     databaseReference.child(uid).child("favorite").child(id).removeValue();
                     Toast.makeText(context.getApplicationContext(), "레시피가 즐겨찾기에서 제거되었습니다.", Toast.LENGTH_SHORT).show();
 
-                    adpater.notifyDataSetChanged();
-                    adpater = new com.example.tux0.favoriteAdapter(arrayList, context);
-                    recyclerView.setAdapter(adpater);
-                    //잘 모르겠당........
+                    arrayList.remove(position);
+                    notifyItemRemoved(position);
+                    notifyDataSetChanged();
 
+                    adpater = new com.example.tux0.favoriteAdapter(arrayList, context);
+                    favorite.recyclerView.setAdapter(adpater);
+
+                    //잘 모르겠당........
                 }
             }
         });

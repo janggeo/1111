@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -82,8 +83,13 @@ public class Mrecipe extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         //재료명 밑의 자식들을 하나하나 snapshot을 찍어 arrayList에 저장
                         for (DataSnapshot snapshot_2 : snapshot.getChildren()) {
-                            recipe recipe = snapshot_2.getValue(recipe.class);
-                            arrayList.add(recipe);
+                            try {
+                                recipe recipe = snapshot_2.getValue(recipe.class);
+                                arrayList.add(recipe);
+                            }
+                            catch (DatabaseException e){
+
+                            }
                         }
                 }
                 adpater.notifyDataSetChanged();
@@ -105,15 +111,20 @@ public class Mrecipe extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //arrayList초기화
                 arrayList.clear();
-                //snapshot을 찍어 입력받은 ingre와 일치하는 name이 있는지 확인
+                //snapshot을 찍어 입력받은 값과 일치하는 name이 있는지 확인
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         //재료명 밑의 자식들을 하나하나 snapshot을 찍어 arrayList에 저장
                         for(DataSnapshot snapshot_1 : snapshot.getChildren()) {
                                 //recipe 안에 name에서 검색어 포함 확인
-                                if (snapshot_1.getValue(recipe.class).getname().contains(ingre1)) {
-                                    recipe recipe = snapshot_1.getValue(recipe.class);
-                                    arrayList.add(recipe);
+                                try {
+                                    if (snapshot_1.getValue(recipe.class).getname().contains(ingre1)) {
+                                        recipe recipe = snapshot_1.getValue(recipe.class);
+                                        arrayList.add(recipe);
+                                    }
                                 }
+                                    catch (DatabaseException e){
+                                    }
+
                         }
                 }
                 adpater.notifyDataSetChanged();

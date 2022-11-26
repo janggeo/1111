@@ -62,6 +62,7 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Customview
                 context.startActivity(urlintent);
             }
         });
+
         //버튼을 통해 파이어베이스 'favorite' 노드에 레시피 추가
         holder.favorite.setOnClickListener(new View.OnClickListener() { // 즐겨찾기 버튼 클릭시
             @Override

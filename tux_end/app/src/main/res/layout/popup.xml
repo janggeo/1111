@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content">
+
+    <!-- 타이틀바 -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ff7a00"
+            android:gravity="center"
+            android:text="재료 추가"
+            android:textColor="#fff"
+            android:textSize="30sp" />
+    </LinearLayout>
+    <!-- //end 타이틀바 -->
+
+    <!-- Notice -->
+    <LinearLayout
+        android:padding="24dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="재료명"
+                android:id="@+id/Text1"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:alpha="0.87"
+                android:gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/ingre_name"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:hint="재료"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="재료개수"
+                android:id="@+id/Text2"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:alpha="0.87"
+                android:gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/ingre_count"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:hint="재료개수"
+                android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="날짜"
+                android:id="@+id/Text"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:alpha="0.87"
+                android:gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/ingre_m"
+                    android:hint="-월"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="date" />
+                <EditText
+                    android:id="@+id/ingre_d"
+                    android:hint="-일"
+                    android:layout_width="40dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="date" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Notice -->
+
+    <View
+        android:background="#66bdbdbd"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <!-- 닫기 버튼 -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="확인"
+            android:textSize="15sp"
+            android:textColor="#ff7a00"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="#00000000"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="mOnClose"/>
+    </LinearLayout>
+    <!--// 닫기 버튼 -->
+</LinearLayout>

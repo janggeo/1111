@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/image_check">
+
+    <Button
+        android:id="@+id/button_yes"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="56dp"
+        android:text="YES"
+        android:background="#00ff0000"
+        android:fontFamily="@font/bm_ttf"
+        android:textColor="@color/purple_550"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_text"
+        app:layout_constraintVertical_bias="0.244" />
+
+    <Button
+        android:id="@+id/button_no"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="56dp"
+        android:text="No"
+        android:background="#00ff0000"
+        android:fontFamily="@font/bm_ttf"
+        android:textColor="@color/purple_550"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_text"
+        app:layout_constraintVertical_bias="0.244" />
+
+    <TextView
+        android:id="@+id/ingredient_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="8"
+        android:fontFamily="@font/bm_ttf"
+        android:text="`name`"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/check_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="302dp"
+        android:layout_weight="8"
+        android:fontFamily="@font/bm_ttf"
+        android:text="촬영하신 재료가 맞나요??"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="250dp"
+        android:layout_height="224dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/trash">
+
+        </ImageView>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

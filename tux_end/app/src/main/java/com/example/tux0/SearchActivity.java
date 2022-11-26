@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -158,8 +159,11 @@ public class SearchActivity extends AppCompatActivity {
                     if (snapshot.getKey().equals(ingre1)) {
                         //재료명 밑의 자식들을 하나하나 snapshot을 찍어 arrayList에 저장
                         for (DataSnapshot snapshot_2 : snapshot.getChildren()) {
-                            recipe recipe = snapshot_2.getValue(recipe.class);
-                            arrayList.add(recipe);
+                            try{recipe recipe = snapshot_2.getValue(recipe.class);
+                                arrayList.add(recipe);}
+                            catch(DatabaseException e){
+
+                            }
                         }
                     }
                 }
@@ -192,8 +196,11 @@ public class SearchActivity extends AppCompatActivity {
                     if (snapshot.getKey().equals(ingre1)) {
                         //재료명 밑의 자식들을 하나하나 snapshot을 찍어 arrayList0에 저장
                         for (DataSnapshot snapshot_2 : snapshot.getChildren()) {
-                            recipe recipe1 = snapshot_2.getValue(recipe.class);
-                            arrayList0.add(recipe1);
+                            try{recipe recipe1 = snapshot_2.getValue(recipe.class);
+                                arrayList0.add(recipe1);}
+                            catch(DatabaseException e){
+
+                            }
                         }
                     }
                 }
@@ -203,12 +210,14 @@ public class SearchActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     if (snapshot.getKey().equals(ingre2)) {
                         for (DataSnapshot snapshot_2 : snapshot.getChildren()) {
-                            recipe recipe2 = snapshot_2.getValue(recipe.class);
-                            for (int i = 0; i < arrayList0.size(); i++) {
-                                if (arrayList0.get(i).getid().equals(recipe2.getid())) {
-                                    arrayList.add(recipe2);
+                            try {
+                                recipe recipe2 = snapshot_2.getValue(recipe.class);
+                                for (int i = 0; i < arrayList0.size(); i++) {
+                                    if (arrayList0.get(i).getid().equals(recipe2.getid())) {
+                                        arrayList.add(recipe2);
+                                    }
                                 }
-                            }
+                            }catch(DatabaseException e){}
                         }
                     }
                 }
@@ -238,8 +247,11 @@ public class SearchActivity extends AppCompatActivity {
                     if (snapshot.getKey().equals(ingre1)) {
                         //재료명 밑의 자식들을 하나하나 snapshot을 찍어 arrayList에 저장
                         for (DataSnapshot snapshot_2 : snapshot.getChildren()) {
-                            recipe recipe = snapshot_2.getValue(recipe.class);
-                            arrayList0.add(recipe);
+                            try{recipe recipe = snapshot_2.getValue(recipe.class);
+                                arrayList0.add(recipe);}
+                            catch(DatabaseException e){
+
+                            }
                         }
                     }
                 }
@@ -247,11 +259,13 @@ public class SearchActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     if (snapshot.getKey().equals(ingre2)) {
                         for (DataSnapshot snapshot_2 : snapshot.getChildren()) {
-                            recipe recipe2 = snapshot_2.getValue(recipe.class);
-                            for (int i = 0; i < arrayList0.size(); i++) {
-                                if (arrayList0.get(i).getid().equals(recipe2.getid())) {
-                                    arrayList1.add(recipe2);
-                                }
+                            try{recipe recipe2 = snapshot_2.getValue(recipe.class);
+                                for (int i = 0; i < arrayList0.size(); i++) {
+                                    if (arrayList0.get(i).getid().equals(recipe2.getid())) {
+                                        arrayList1.add(recipe2);
+                                    }
+                                }}catch(DatabaseException e){
+
                             }
                         }
                     }
@@ -260,11 +274,14 @@ public class SearchActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     if (snapshot.getKey().equals(ingre3)) {
                         for (DataSnapshot snapshot_3 : snapshot.getChildren()) {
-                            recipe recipe3 = snapshot_3.getValue(recipe.class);
-                            for (int i = 0; i < arrayList1.size(); i++) {
-                                if (arrayList1.get(i).getid().equals(recipe3.getid())) {
-                                    arrayList.add(recipe3);
+                            try{recipe recipe3 = snapshot_3.getValue(recipe.class);
+                                for (int i = 0; i < arrayList1.size(); i++) {
+                                    if (arrayList1.get(i).getid().equals(recipe3.getid())) {
+                                        arrayList.add(recipe3);
+                                    }
                                 }
+                            }catch(DatabaseException e){
+
                             }
                         }
                     }

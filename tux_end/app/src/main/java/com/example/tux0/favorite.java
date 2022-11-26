@@ -2,10 +2,13 @@
 package com.example.tux0;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -24,7 +28,7 @@ import java.util.ArrayList;
 
 public class favorite extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
     private RecyclerView.Adapter adpater;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<recipe> arrayList;
@@ -32,6 +36,7 @@ public class favorite extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseUser firebaseUser;
     private String uid;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +69,15 @@ public class favorite extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     arrayList.clear();//arrayList 초기화
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){ //favorite하위 항목들 하나하나 불러오기
-                        recipe recipe = snapshot.getValue(recipe.class); // recipe에 하나씩 저장
-                        arrayList.add(recipe); //arrayList에 recipe추가
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) { //favorite하위 항목들 하나하나 불러오기
+                        try {
+                            recipe recipe = snapshot.getValue(recipe.class);
+                            arrayList.add(recipe);
+                        } catch (DatabaseException e) {
+
+                        }
+                        adpater.notifyDataSetChanged();
                     }
-                    adpater.notifyDataSetChanged();
                 }
 
                 @Override
@@ -78,10 +87,12 @@ public class favorite extends AppCompatActivity {
             });
         }
 
+        Log.v("test", "test " + this);
         adpater = new com.example.tux0.favoriteAdapter(arrayList, this);
-        recyclerView.setAdapter(adpater);   //리사이클러뷰 호출?
-
+        recyclerView.setAdapter(adpater);
     }
+
+
 
     @Override
     public void onBackPressed(){

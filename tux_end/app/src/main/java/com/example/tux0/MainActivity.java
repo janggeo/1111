@@ -1,10 +1,14 @@
 package com.example.tux0;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +19,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.tux0.databinding.ActivityMainBinding;
 import com.example.tux0.ui.opensource_go;
@@ -23,8 +30,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private boolean button_plus_status = false;
@@ -33,21 +47,37 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton button_camera;
     private FloatingActionButton button_manual;
     private FloatingActionButton button_search;
+    private Button button_add;
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseuser;
-    private String uid;
+    private ArrayList<ingre> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private  String email;
+    private FirebaseUser firebaseUser;
+    public static RecyclerView recyclerView;
+    private RecyclerView.Adapter adpater;
+    private RecyclerView.LayoutManager layoutManager;
+    private String uid;
+    private String email;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
 
+    int count;
+    //favorite 부분 처럼 처음에 불러오기로 바꾸기
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
+        }
+        switch (item.getItemId()){
+            case R.id.add_button:
+                Intent intent = new Intent(MainActivity.this, PopupActivity.class);
+                intent.putExtra("count",count);
+                startActivity(intent);
+                count=count+1;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -68,19 +98,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-        /*
-        logout = findViewById(R.id.logout_button);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth = FirebaseAuth.getInstance();
-                mAuth.signOut();
-                Intent intent = new Intent(MainActivity.this, loginActivity.class);
-                startActivity(intent);
-            }
-        });
-        */
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view2);
@@ -112,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        //팀소개는 바로 깃허브 연결로
 
         firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseuser != null) {
@@ -122,6 +140,52 @@ public class MainActivity extends AppCompatActivity {
         View header = navigationView.getHeaderView(0);
         TextView user_name = (TextView) header.findViewById(R.id.user_name);
         user_name.setText(email);
+
+
+        recyclerView = findViewById(R.id.recyclerView_ingre);
+        recyclerView.setHasFixedSize((true));
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager((layoutManager));
+        arrayList = new ArrayList<>();
+
+        // getInstance()를 사용하여 데이터베이스의 인스턴스를 검색하고 쓰려는 위치를 참조합니다
+        database = FirebaseDatabase.getInstance();
+        //firebaseAuth 인스턴스 현재 접속된 사용자로 초기화
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (firebaseUser != null) { //접속한 사용자인스턴스가 제대로 불려와졌을 경우
+
+            uid = firebaseUser.getUid(); //uid저장
+
+            //데이터베이스에서 데이터를 읽거나 쓰려면 DatabaseReference 인스턴스가 필요
+            //데이터를 읽을 위치로 Users.uid.favorite(사용자가 즐겨찾기한 레시피가 저장되어있음)를 지정
+            databaseReference = database.getReference("Users").child(uid).child("ingre");
+
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    arrayList.clear();//arrayList 초기화
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) { //ingre하위 항목들 하나하나 불러오기
+                        try {
+                            ingre ingre = snapshot.getValue(ingre.class);
+                            arrayList.add(ingre);
+                        } catch (DatabaseException e) {
+
+                        }
+                        adpater.notifyDataSetChanged();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.e("MainActivity", String.valueOf(error.toException()));
+                }
+            });
+        }
+
+        adpater = new com.example.tux0.ingredientAdapter(arrayList, this);
+        recyclerView.setAdapter(adpater);
 
         /*
         Button button_camera = (Button)findViewById(R.id.button_camera);
@@ -139,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
         button_camera = findViewById(R.id.floating_button_camera);
         button_manual = findViewById(R.id.floating_button_manual);
         button_search = findViewById(R.id.floating_button_search);
+        button_add = findViewById(R.id.add_button);
+
 
         button_plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,13 +212,14 @@ public class MainActivity extends AppCompatActivity {
                 toggleFab();
             }
         });
-        button_camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mintent = new Intent(MainActivity.this, Camara_cv.class);
-                startActivity(mintent);
-            }
-        });
+
+//        button_camera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent mintent = new Intent(MainActivity.this, Camara_cv.class);
+//                startActivity(mintent);
+//            }
+//        });
         button_manual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,6 +234,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, objectDetection.class);
+                startActivity(intent);
+            }
+        });
+
+//        button_add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(MainActivity.this, PopupActivity.class);
+//                intent.putExtra("count",count);
+//                startActivity(intent);
+//                count=count+1;
+//            }
+//        });
 
     }
 
@@ -190,6 +275,47 @@ public class MainActivity extends AppCompatActivity {
         }
         button_plus_status = !button_plus_status;
 
+    }
+
+    protected void AddIngre(){
+
+        arrayList = new ArrayList<>();
+            Intent data = getIntent();
+            Log.d("MainActivity","success receivedata ");
+                Log.d("MainActivity","success receivedata ");
+                //데이터 받기
+                String name = data.getStringExtra("name");
+                String cnt = data.getStringExtra("cnt");
+                String date = data.getStringExtra("date");
+                Log.d("MainActivity","success receivedata ");
+                // getInstance()를 사용하여 데이터베이스의 인스턴스를 검색하고 쓰려는 위치를 참조합니다
+                database = FirebaseDatabase.getInstance();
+                //firebaseAuth 인스턴스 현재 접속된 사용자로 초기화
+                firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (firebaseUser != null){ //접속한 사용자인스턴스가 제대로 불려와졌을 경우
+
+                    uid = firebaseUser.getUid(); //uid저장
+
+                    //데이터베이스에서 데이터를 읽거나 쓰려면 DatabaseReference 인스턴스가 필요
+                    //데이터를 읽을 위치로 Users.uid.favorite(사용자가 즐겨찾기한 레시피가 저장되어있음)를 지정
+                    databaseReference = database.getReference("Users").child(uid).child("ingre");
+
+                    databaseReference.child(Integer.toString(count)).setValue(name);
+                    databaseReference.child(Integer.toString(count)).setValue(cnt);
+                    databaseReference.child(Integer.toString(count)).setValue(date);
+
+                }
+            }
+
+
+    public void addIngre(){
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
 /*

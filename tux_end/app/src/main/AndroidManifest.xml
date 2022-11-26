@@ -41,6 +41,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ObjectSearch"/>
+        <activity
+            android:name=".helpers.ImageHelperActivity"
+            android:exported="true" />
+        <activity android:name=".objectDetection"/>
+        <activity android:name=".image.ObjectDetectionActivity"/>
+
         <activity
             android:name=".loginActivity"
             android:exported="true" />
@@ -49,6 +56,11 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name" />
+
+        <activity
+            android:name=".PopupActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Dialog"/>
 
         <activity android:name=".Camara_cv"
             android:screenOrientation="landscape"
@@ -64,5 +76,13 @@
         <activity android:name=".favorite"/>
         <activity android:name=".joinActivity"/>
         <activity android:name=".Mrecipe"/>
+        <provider
+            android:authorities="com.example.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:resource="@xml/fileprovider"
+                android:name="android.support.FILE_PROVIDER_PATHS"/>
+        </provider>
     </application>
 </manifest>

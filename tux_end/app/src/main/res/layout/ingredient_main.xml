@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:background="@drawable/round"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="132dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="120dp"
+                android:layout_height="86dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_launcher_background" />
+
+            <Button
+                android:id="@+id/ingre_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:background="#00ff0000"
+                android:fontFamily="@font/bm_ttf"
+                android:paddingTop="5dp"
+                android:text="삭제"
+                android:textColor="@color/purple_500"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/in_name"
+                android:layout_width="233dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/bm_ttf"
+                android:text="name"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/in_date"
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/bm_ttf"
+                android:text="info"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/in_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="cnt"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/bm_ttf"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/recipe_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:text="recipe"
+                android:fontFamily="@font/bm_ttf"
+                android:textSize="20sp"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
