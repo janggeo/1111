@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">보여줘 냉장고!</string>
+    <string name="title_home">냉장고</string>
+    <string name="title_dashboard">레시피</string>
+    <string name="title_notifications">즐겨찾기</string>
+    <string name="fridge_background_icon">냉장고를 채워주세요!"</string>
+    <string name="open" >Open Navigation Drawer</string>
+    <string name="close" >Close Navigation Drawer</string>
+    <string name="id">id:</string>
+    <string name="email">email</string>
+
+</resources>
