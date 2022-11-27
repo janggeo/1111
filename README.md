@@ -13,7 +13,7 @@
 | ---------- | ---------------------------------------------------------------- |
 | 프론트엔드 | Java |
 | 크롤링     | Python, Firebase  |
-| OpenCV   | Python , YOLOv5, Colaboratory                    |
+| OpenCV   | Python , C++, YOLOv5, Colaboratory , labelimg                    |
 
 ### 서비스 소개
 
