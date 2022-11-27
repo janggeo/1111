@@ -1,0 +1,7 @@
+Executable : C:\Users\Administrator\AppData\Local\Android\Sdk\cmake\3.18.1\bin\ninja.exe
+arguments : 
+-C
+C:\Users\Administrator\AndroidStudioProjects\1127_real\sdk\.cxx\Debug\572o4y37\x86
+opencv_jni_shared
+jvmArgs : 
+
