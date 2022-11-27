@@ -1,9 +1,10 @@
-# 오픈소스 SW 동아리
+# *'보여줘 냉장고'* 오픈소스 SW 동아리
+-------------------------------------------------------------------------------
 냉장고에 남아있는 식재료로 만들 수 있는 음식을 추천해주고 레시피를 제공하는 안드로이드 앱 개발
 
 ## 활용 오픈소스
-- OpenCV로 냉장고 속 재료 파악하기
-- machine learning을 이용한 레시피 추천시스템
+- 
+- 
 
 <br/>
 
@@ -11,12 +12,12 @@
 
 ## 1. 프로젝트 소개
 
-### 기술 스택 // 변경 필요
+### 기술 스택 
 
 | 포지션     | 기술 스택                                                        |
 | ---------- | ---------------------------------------------------------------- |
-| 프론트엔드 | JavaScript, React.js, Styled-components, Axios, React Router DOM |
-| 크롤링     | Python, Flask, MySQL , Docker, SQLAlchemy, flask-restx(Swagger)  |
+| 프론트엔드 | Java |
+| 크롤링     | Python, Firebase  |
 | OpenCV   | Python, TensorFlow, YOLOv5, Jupyter Notebook                     |
 
 ### 서비스 소개
